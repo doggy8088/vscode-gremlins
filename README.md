@@ -1,66 +1,65 @@
-# Gremlins tracker for Visual Studio Code
+# 程式碼除妖鏡 (Gremlins Tracker) for Visual Studio Code
 
-[![GitHub package version](https://img.shields.io/github/package-json/v/nhoizey/vscode-gremlins.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins)
-[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/d/nhoizey.gremlins.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins)
-[![GitHub stars](https://img.shields.io/github/stars/nhoizey/vscode-gremlins.svg?style=for-the-badge&logo=github)](https://github.com/nhoizey/vscode-gremlins/stargazers)
-[![Follow @nhoizey@mamot.fr](https://img.shields.io/mastodon/follow/000262395?domain=https%3A%2F%2Fmamot.fr&style=for-the-badge&logo=mastodon&logoColor=white&color=6364FF)](https://mamot.fr/@nhoizey)
+[![GitHub package version](https://img.shields.io/github/package-json/v/doggy8088/vscode-gremlins.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=doggy8088.gremlins-tracker-zh-tw)
+[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/d/doggy8088.gremlins-tracker-zh-tw.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=doggy8088.gremlins-tracker-zh-tw)
+[![GitHub stars](https://img.shields.io/github/stars/doggy8088/vscode-gremlins.svg?style=for-the-badge&logo=github)](https://github.com/doggy8088/vscode-gremlins/stargazers)
 
-This [Visual Studio Code](https://code.visualstudio.com/) extension reveals some characters that can be harmful because they are invisible or looking like legitimate ones.
+這款 [Visual Studio Code](https://code.visualstudio.com/) 擴充功能可以幫你找出程式碼中潛在的「妖魔鬼怪」（Gremlins，即隱形字元、零寬字元，或看起來和正常字元一模一樣的干擾字元），避免它們造成編譯或執行時難以排查的錯誤。
 
-## Features
+## 特色與功能
 
-- When there is a zero-width space in the code, the extension shows a red bar
-- When there is a zero-width non-joiner in the code, the extension shows a red bar
-- A few characters that can be harmful have a light red or orange background
-  - Non-breaking spaces
-  - Left and right double quotation marks
-  - Etc.
-- Some other characters are less harmful, but you might be interested in knowing they're here, so they're also shown, in blue
-- Move the cursor over the character to have a hint of the potential issue
-- A gremlin icon is shown in the gutter for every line that contains at least one of these characters
+- 當程式碼中存在**零寬空格 (zero-width space)** 時，套件會以紅色邊框標記
+- 當程式碼中存在**零寬不連字字元 (zero-width non-joiner)** 時，套件會以紅色邊框標記
+- 對於其他可能有害的干擾字元，套件會以淡紅色或橘色背景標記
+  - 不換行空格 (Non-breaking spaces)
+  - 左/右雙引號 (Left and right double quotation marks)
+  - 以及更多其他干擾字元
+- 對於一些雖然無害但您可能想知道其存在的字元，套件會以藍色背景標記
+- 當你將游標移到被標記的字元上時，會顯示懸浮提示，告訴你這個字元的 Unicode 編碼和說明
+- 側邊欄 (Gutter) 會在包含這些干擾字元的每一行顯示一個「除妖鏡小精靈」圖示
 
-![A screenshot of Gremlins in action](images/screenshot.png)
+![程式碼除妖鏡執行畫面](images/screenshot.png)
 
-You can also use the [“Unicode code point of current character” extension](https://marketplace.visualstudio.com/items?itemName=zeithaste.cursorCharCode) to show information about the character under cursor in the status bar.
+您也可以搭配使用 [“Unicode code point of current character” 擴充功能](https://marketplace.visualstudio.com/items?itemName=zeithaste.cursorCharCode) 來在狀態列顯示目前游標下字元的 Unicode 詳細資訊。
 
-## Adding new gremlins characters
+## 新增自訂干擾字元
 
-You can configure the list of additional characters and how they are shown under user settings key `gremlins.characters`.
+您可以透過使用者設定中的 `gremlins.characters` 鍵值，設定其他要追蹤的自訂字元以及它們的顯示方式。
 
-As an example, the following snippet adds the "U+000C" FORM FEED character:
+例如，以下程式碼片段新增了 "U+000C" 換頁字元 (FORM FEED)：
 
 ```jsonc
 "gremlins.characters": {
   "000c" : {
     "zeroWidth": true,
-    "description": "FORM FEED (FF)",
+    "description": "換頁字元 (FORM FEED, FF)",
     "overviewRulerColor": "rgba(255,127,80,1)",
   }
 }
 ```
 
-Please help enhance the extension by suggesting new default characters, through Pull Requests or Issues.
+歡迎透過發起 Pull Request 或建立 Issue 來提供建議，協助我們改進預設追蹤的字元。
 
-You can find all characters in [Unicode Table](https://unicode-table.com/en/).
+您可以在 [Unicode Table](https://unicode-table.com/en/) 查詢所有字元的 Unicode。
 
-## Language-specific gremlins characters
+## 特定程式語言的干擾字元設定
 
-You can override the characters for a specific language by configuring them in the `gremlins.characters` property of the language-specific settings key (e.g. `[markdown]` for Markdown files).
+您可以透過設定特定語言的屬性，為該語言覆蓋或停用字元設定（例如，針對 Markdown 檔案使用 `[markdown]` 區段）。
 
-> More information about language specific settings can be found in the [Language specific editor settings](https://code.visualstudio.com/docs/getstarted/settings#_language-specific-editor-settings) VSCode documentation page.
+> 關於特定語言編輯器設定的更多資訊，請參閱 VSCode 官方文件：[Language specific editor settings](https://code.visualstudio.com/docs/getstarted/settings#_language-specific-editor-settings)。
 
-As an example, the following snippet adds the "U+000C" (form feed) character and disables the "U+00A0" (non-breaking space) character for markdown files:
+例如，以下程式碼片段為 markdown 檔案新增了 "U+000C" (換頁字元)，同時忽略了 "U+00A0" (不換行空格) 字元：
 
 ```jsonc
 "[markdown]": {
   "gremlins.characters": {
-    // Add the form feed character for markdown files
+    // 為 markdown 檔案啟用換頁字元偵測
     "000c" : {
       "zeroWidth": true,
-      "description": "FORM FEED (FF)",
+      "description": "換頁字元 (FORM FEED, FF)",
       "level": "error",
     },
-    // Ignore the non-breaking space character for markdown files
+    // 在 markdown 檔案中忽略不換行空格
     "00a0": {
       "level": "none"
     }
@@ -68,29 +67,29 @@ As an example, the following snippet adds the "U+000C" (form feed) character and
 }
 ```
 
-## Specifying a Range of Invalid Characters
+## 指定無效字元的範圍
 
-You can give a range to flag multiple characters with a single rule.
+您可以指定一個十六進位區間，用單一規則來標記多個連續字元。
 
-For example, if using macOS and the option key is set to a modifier, it's easy to accidentally include a [Latin-1 Supplemental Character](https://unicode-table.com/en/blocks/latin-1-supplement/) that can be difficult to notice in your code.
+例如，在 macOS 中，如果將 Option 鍵設為修飾鍵，很容易在不經意間打出 [Latin-1 補充字元 (Latin-1 Supplemental Characters)](https://unicode-table.com/en/blocks/latin-1-supplement/)，這在一般的編輯器中很難被察覺。
 
-To catch the entire range, the Latin-1-Supplement link provided shows a unicode range of: `0080—00FF`
+為了捕捉這個範圍，上述連結中顯示的 Unicode 範圍為：`0080—00FF`
 
-Configure a rule like this:
+您可以設定如下規則：
 
 ```jsonc
 "gremlins.characters": {
     "0080-00FF": {
         "level": "error",
         "zeroWidth": false,
-        "description": "Latin-1 Supplement character identified",
+        "description": "偵測到 Latin-1 補充字元",
         "overviewRulerColor": "rgba(255,127,80,1)",
     },
 }
 ```
 
-To test this out, copy some of the [characters](https://unicode-table.com/en/blocks/latin-1-supplement/) or try the sample below.
-If you have the problems pane set to flag as errors, this should show up immediately with each character being identified as a problem.
+您可以嘗試複製一些 [補充字元](https://unicode-table.com/en/blocks/latin-1-supplement/) 來測試效果，或使用底下的範例：
+如果您將 VS Code 的問題面板 (Problems Pane) 設定為標記錯誤，這些字元會立即被標記為錯誤。
 
 ```text
 »
@@ -98,13 +97,13 @@ If you have the problems pane set to flag as errors, this should show up immedia
 Ö
 ```
 
-## Hiding the gremlin icon in the gutter for a character
+## 隱藏特定字元的側邊欄圖示
 
-You can chose to hide the gremlin icon in the gutter for some characters.
+您可以選擇隱藏特定字元在側邊欄 (Gutter) 中的除妖鏡小精靈圖示。
 
-Still under user settings key `gremlins.characters`, you can add the `hideGutterIcon` property to a character (even one from default settings) and set it to true.
+同樣是在 `gremlins.characters` 中，為字元加入 `hideGutterIcon` 屬性並設為 `true` 即可。
 
-For example, this removes the gremlin icon in the gutter for non breakable spaces:
+例如，這會隱藏不換行空格 (Non-breaking space) 的側邊欄小精靈圖示：
 
 ```jsonc
 "gremlins.characters": {
@@ -114,32 +113,32 @@ For example, this removes the gremlin icon in the gutter for non breakable space
 }
 ```
 
-## Displaying gremlins in the Problems pane
+## 在問題面板 (Problems) 中顯示干擾字元
 
-By default, gremlins will be highligted in the text editor and an icon will be displayed in the gutter for each line with at least one gremlin. You can toggle whether gremlins also show in the Problems pane with user settings key `gremlins.showInProblemPane`.
+預設情況下，干擾字元會在編輯器中高亮顯示，且在側邊欄 (Gutter) 顯示小精靈圖示。您可以使用使用者設定中的 `gremlins.showInProblemPane` 鍵值，決定是否也要在「問題 (Problems)」面板中顯示偵測到的干擾字元。
 
-![A screenshot of Gremlins in Problem Pane](images/problems-screenshot.png)
+![在問題面板中顯示](images/problems-screenshot.png)
 
-## Displaying end-of-line characters
+## 顯示行尾字元 (EOL)
 
-If you want to display end-of-line characters, you can use the [Render Line Endings plugin](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf).
+如果您希望顯示行尾字元，建議使用 [Render Line Endings 套件](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf)。
 
-# Standing on the shoulders of giants
+# 站在巨人的肩膀上
 
-VS Code Gremlins was initialy heavily inspired by [Sublime Gremlins](https://packagecontrol.io/packages/Gremlins), a [Sublime Text](https://www.sublimetext.com/) 3 plugin to help identify invisible and ambiguous Unicode whitespace characters (zero width spaces, no-break spaces, and similar.).
+本套件 (VS Code Gremlins) 最初深受 [Sublime Gremlins](https://packagecontrol.io/packages/Gremlins) 的啟發。後者是一個 [Sublime Text 3](https://www.sublimetext.com/) 外掛，用來標記隱形和模稜兩可的 Unicode 空白字元（如零寬空格、不換行空格等）。
 
-I later discovered the “Gremlins” name had already been used a long time before, in some editors:
+後來我們發現，「Gremlins」這個名稱早在 1992 年就出現在其他編輯器中了：
 
-[Bare Bones Software](http://www.barebones.com/)'s famous [BBEdit](http://www.barebones.com/products/bbedit/) HTML and text editor for macOS has a “Zap Gremlins” feature since [its first public release April 12th, 1992](https://groups.google.com/forum/#!topic/comp.sys.mac.announce/gvPGyuX3UCs)!
+[Bare Bones Software](http://www.barebones.com/) 著名且深受 macOS 使用者喜愛的 [BBEdit](http://www.barebones.com/products/bbedit/) HTML 與文字編輯器，自從 **1992 年 4 月 12 日**推出的第一個公開版本中，就內建了「Zap Gremlins（除妖功能）」！
 
-Here's how it looks in recent versions:
+以下是 BBEdit 最近版本的畫面：
 
-<p style="text-align: center"><img src="https://raw.githubusercontent.com/nhoizey/vscode-gremlins/master/images/bbedit-gremlins.png" width="50%" height="auto" alt="Searching for Gremlins in BBEdit" /></p>
+<p style="text-align: center"><img src="https://raw.githubusercontent.com/doggy8088/vscode-gremlins/master/images/bbedit-gremlins.png" width="50%" height="auto" alt="在 BBEdit 中搜尋 Gremlins" /></p>
 
-It looks like people liked this feature so much that they made [a dedicated website](http://zapgremlins.com/), unfortunately not anymore. Thanks Archive.org for [the cached version](https://web.archive.org/web/20120618091150/http://zapgremlins.com/):
+許多使用者非常喜愛這個功能，甚至曾經為它架設了[一個專屬網站](http://zapgremlins.com/)。雖然該網站目前已關閉，但感謝 Archive.org 還保留著[快照版本](https://web.archive.org/web/20120618091150/http://zapgremlins.com/)：
 
-<p style="text-align: center"><img src="https://raw.githubusercontent.com/nhoizey/vscode-gremlins/master/images/zap-gremlins.jpg" width="75%" height="auto" alt="The Zap Gremlins website" /></p>
+<p style="text-align: center"><img src="https://raw.githubusercontent.com/doggy8088/vscode-gremlins/master/images/zap-gremlins.jpg" width="75%" height="auto" alt="Zap Gremlins 網站快照" /></p>
 
-## License
+## 授權條款
 
 MIT

@@ -8,7 +8,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 zero width space (unicode U+200b) here",
+        "hoverMessage": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -63,7 +63,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 zero width space (unicode U+200b) here",
+        "hoverMessage": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -86,7 +86,7 @@ Array [
     "document4",
     Array [
       Object {
-        "message": "1 zero width space (unicode U+200b) here",
+        "message": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -98,7 +98,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Error",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -113,7 +113,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 zero width space (unicode U+200b) here",
+        "hoverMessage": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -136,7 +136,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 zero width space (unicode U+200b) here",
+        "message": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -148,7 +148,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Error",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -228,7 +228,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 zero width space (unicode U+200b) here",
+        "hoverMessage": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -313,7 +313,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 left double quotation mark (unicode U+201c) here",
+        "hoverMessage": "此處有 1 個 左雙引號 (left double quotation mark) (Unicode U+201c)",
         "range": Object {
           "left": Object {
             "char": 27,
@@ -336,7 +336,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 left double quotation mark (unicode U+201c) here",
+        "message": "此處有 1 個 左雙引號 (left double quotation mark) (Unicode U+201c)",
         "range": Object {
           "left": Object {
             "char": 27,
@@ -348,7 +348,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Warning",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -363,7 +363,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "3 paragraph separators (unicode U+2029) here",
+        "hoverMessage": "此處有 3 個 段落分隔符 (paragraph separator) (Unicode U+2029)",
         "range": Object {
           "left": Object {
             "char": 20,
@@ -376,7 +376,7 @@ Array [
         },
       },
       Object {
-        "hoverMessage": "3 non breaking spaces (unicode U+00a0) here",
+        "hoverMessage": "此處有 3 個 不換行空格 (non breaking space) (Unicode U+00a0)",
         "range": Object {
           "left": Object {
             "char": 19,
@@ -389,7 +389,7 @@ Array [
         },
       },
       Object {
-        "hoverMessage": "3 zero width spaces (unicode U+200b) here",
+        "hoverMessage": "此處有 3 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -402,7 +402,7 @@ Array [
         },
       },
       Object {
-        "hoverMessage": "3 zero width non-joiners (unicode U+200c) here",
+        "hoverMessage": "此處有 3 個 零寬不連字字元 (zero width non-joiner) (Unicode U+200c)",
         "range": Object {
           "left": Object {
             "char": 22,
@@ -415,7 +415,7 @@ Array [
         },
       },
       Object {
-        "hoverMessage": "3 left double quotation marks (unicode U+201c) here",
+        "hoverMessage": "此處有 3 個 左雙引號 (left double quotation mark) (Unicode U+201c)",
         "range": Object {
           "left": Object {
             "char": 27,
@@ -428,7 +428,7 @@ Array [
         },
       },
       Object {
-        "hoverMessage": "3 right double quotation marks (unicode U+201d) here",
+        "hoverMessage": "此處有 3 個 右雙引號 (right double quotation mark) (Unicode U+201d)",
         "range": Object {
           "left": Object {
             "char": 28,
@@ -451,7 +451,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "3 zero width spaces (unicode U+200b) here",
+        "message": "此處有 3 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -463,10 +463,10 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Error",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
       Object {
-        "message": "3 zero width non-joiners (unicode U+200c) here",
+        "message": "此處有 3 個 零寬不連字字元 (zero width non-joiner) (Unicode U+200c)",
         "range": Object {
           "left": Object {
             "char": 22,
@@ -478,10 +478,10 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Warning",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
       Object {
-        "message": "3 paragraph separators (unicode U+2029) here",
+        "message": "此處有 3 個 段落分隔符 (paragraph separator) (Unicode U+2029)",
         "range": Object {
           "left": Object {
             "char": 20,
@@ -493,10 +493,10 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Error",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
       Object {
-        "message": "3 non breaking spaces (unicode U+00a0) here",
+        "message": "此處有 3 個 不換行空格 (non breaking space) (Unicode U+00a0)",
         "range": Object {
           "left": Object {
             "char": 19,
@@ -508,10 +508,10 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Information",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
       Object {
-        "message": "3 left double quotation marks (unicode U+201c) here",
+        "message": "此處有 3 個 左雙引號 (left double quotation mark) (Unicode U+201c)",
         "range": Object {
           "left": Object {
             "char": 27,
@@ -523,10 +523,10 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Warning",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
       Object {
-        "message": "3 right double quotation marks (unicode U+201d) here",
+        "message": "此處有 3 個 右雙引號 (right double quotation mark) (Unicode U+201d)",
         "range": Object {
           "left": Object {
             "char": 28,
@@ -538,7 +538,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Warning",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -553,7 +553,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 non breaking space (unicode U+00a0) here",
+        "hoverMessage": "此處有 1 個 不換行空格 (non breaking space) (Unicode U+00a0)",
         "range": Object {
           "left": Object {
             "char": 19,
@@ -576,7 +576,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 non breaking space (unicode U+00a0) here",
+        "message": "此處有 1 個 不換行空格 (non breaking space) (Unicode U+00a0)",
         "range": Object {
           "left": Object {
             "char": 19,
@@ -588,7 +588,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Information",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -603,7 +603,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 object replacement character (unicode U+fffc) here",
+        "hoverMessage": "此處有 1 個 物件替換字元 (object replacement character) (Unicode U+fffc)",
         "range": Object {
           "left": Object {
             "char": 29,
@@ -626,7 +626,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 object replacement character (unicode U+fffc) here",
+        "message": "此處有 1 個 物件替換字元 (object replacement character) (Unicode U+fffc)",
         "range": Object {
           "left": Object {
             "char": 29,
@@ -638,7 +638,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Error",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -653,7 +653,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 paragraph separator (unicode U+2029) here",
+        "hoverMessage": "此處有 1 個 段落分隔符 (paragraph separator) (Unicode U+2029)",
         "range": Object {
           "left": Object {
             "char": 20,
@@ -676,7 +676,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 paragraph separator (unicode U+2029) here",
+        "message": "此處有 1 個 段落分隔符 (paragraph separator) (Unicode U+2029)",
         "range": Object {
           "left": Object {
             "char": 20,
@@ -688,7 +688,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Error",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -703,7 +703,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 right double quotation mark (unicode U+201d) here",
+        "hoverMessage": "此處有 1 個 右雙引號 (right double quotation mark) (Unicode U+201d)",
         "range": Object {
           "left": Object {
             "char": 28,
@@ -726,7 +726,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 right double quotation mark (unicode U+201d) here",
+        "message": "此處有 1 個 右雙引號 (right double quotation mark) (Unicode U+201d)",
         "range": Object {
           "left": Object {
             "char": 28,
@@ -738,7 +738,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Warning",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -753,7 +753,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 soft hyphen (unicode U+00ad) here",
+        "hoverMessage": "此處有 1 個 軟連字號 (soft hyphen) (Unicode U+00ad)",
         "range": Object {
           "left": Object {
             "char": 12,
@@ -776,7 +776,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 soft hyphen (unicode U+00ad) here",
+        "message": "此處有 1 個 軟連字號 (soft hyphen) (Unicode U+00ad)",
         "range": Object {
           "left": Object {
             "char": 12,
@@ -788,7 +788,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Information",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -803,7 +803,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 zero width non-joiner (unicode U+200c) here",
+        "hoverMessage": "此處有 1 個 零寬不連字字元 (zero width non-joiner) (Unicode U+200c)",
         "range": Object {
           "left": Object {
             "char": 22,
@@ -826,7 +826,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 zero width non-joiner (unicode U+200c) here",
+        "message": "此處有 1 個 零寬不連字字元 (zero width non-joiner) (Unicode U+200c)",
         "range": Object {
           "left": Object {
             "char": 22,
@@ -838,7 +838,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Warning",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],
@@ -853,7 +853,7 @@ Array [
     },
     Array [
       Object {
-        "hoverMessage": "1 zero width space (unicode U+200b) here",
+        "hoverMessage": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -876,7 +876,7 @@ Array [
     "document1",
     Array [
       Object {
-        "message": "1 zero width space (unicode U+200b) here",
+        "message": "此處有 1 個 零寬空格 (zero width space) (Unicode U+200b)",
         "range": Object {
           "left": Object {
             "char": 17,
@@ -888,7 +888,7 @@ Array [
           },
         },
         "severity": "DiagnosticSeverity.Error",
-        "source": "Gremlins tracker",
+        "source": "程式碼除妖鏡",
       },
     ],
   ],

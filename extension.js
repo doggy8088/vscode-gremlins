@@ -1,4 +1,4 @@
-var vscode = require('vscode')
+const vscode = require('vscode')
 
 const GREMLINS = 'gremlins'
 
@@ -32,8 +32,7 @@ let diagnosticCollection = null
 
 function configureDiagnosticsCollection(showDiagnostics) {
   if (showDiagnostics && !diagnosticCollection) {
-    diagnosticCollection = diagnosticCollection =
-      vscode.languages.createDiagnosticCollection(GREMLINS)
+    diagnosticCollection = vscode.languages.createDiagnosticCollection(GREMLINS)
   } else if (!showDiagnostics && diagnosticCollection) {
     diagnosticCollection.clear()
     diagnosticCollection.dispose()
@@ -43,14 +42,14 @@ function configureDiagnosticsCollection(showDiagnostics) {
 }
 
 function disposeDecorationTypes() {
-  Object.entries(decorationTypes).forEach(([key, decorationType]) => {
+  Object.entries(decorationTypes).forEach(([, decorationType]) => {
     decorationType.dispose()
   })
   decorationTypes = {}
 }
 
 /**
- *
+ * 載入圖示路徑
  * @param {vscode.ExtensionContext} context
  */
 function loadIcons(context) {
@@ -59,7 +58,16 @@ function loadIcons(context) {
 }
 
 /**
- *
+ * 轉義 RegExp 特殊字元，確保使用者設定中的字元不破壞常規表示式
+ * @param {string} string
+ * @returns {string}
+ */
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+/**
+ * 載入檔案對應的設定
  * @param {vscode.TextDocument} document
  */
 function loadConfiguration(document) {
@@ -73,9 +81,9 @@ function loadConfiguration(document) {
   const showDiagnostics = gremlinsConfiguration.showInProblemPane
   const diagnosticCollection = configureDiagnosticsCollection(showDiagnostics)
 
-  let regexpWithAllChars = new RegExp(
+  const regexpWithAllChars = new RegExp(
     Object.keys(gremlins)
-      .map((char) => `${char}+`)
+      .map((char) => `${escapeRegExp(char)}+`)
       .join('|'),
     'g',
   )
@@ -112,11 +120,11 @@ function gremlinsFromConfig(gremlinsConfiguration) {
       ? config.level.toLowerCase()
       : GREMLINS_LEVELS.ERROR
     if (severityLevel === GREMLINS_LEVELS.NONE) {
-      // Ignore gremlins marked as "none"
+      // 忽略設定為 none 的干擾字元
       continue
     }
 
-    let decorationType = {
+    const decorationType = {
       light: config.hideGutterIcon ? {} : lightIcon,
       dark: config.hideGutterIcon ? {} : darkIcon,
       overviewRulerColor: config.overviewRulerColor || gremlinsDefaultColor,
@@ -131,15 +139,14 @@ function gremlinsFromConfig(gremlinsConfiguration) {
       decorationType.backgroundColor = gremlinsLevels[severityLevel]
     }
 
-    let hexCodePointsRange = hexCodePoint.match(hexCodePointsRangeRegex)
+    const hexCodePointsRange = hexCodePoint.match(hexCodePointsRangeRegex)
     if (hexCodePointsRange[2] !== undefined) {
-      // This is a range of characters
-      // Lets create all characters of the range, with the same configuration
-      let firstChar = parseInt(`0x${hexCodePointsRange[1]}`, 16)
-      let lastChar = parseInt(`0x${hexCodePointsRange[2]}`, 16)
+      // 範圍字元 (例如 0080-00FF)
+      const firstChar = parseInt(`0x${hexCodePointsRange[1]}`, 16)
+      const lastChar = parseInt(`0x${hexCodePointsRange[2]}`, 16)
 
-      for (var index = firstChar; index <= lastChar; ++index) {
-        let thisHexCodePoint = index.toString(16)
+      for (let index = firstChar; index <= lastChar; ++index) {
+        const thisHexCodePoint = index.toString(16)
 
         gremlins[String.fromCharCode(index)] = Object.assign({}, config, {
           thisHexCodePoint,
@@ -147,7 +154,7 @@ function gremlinsFromConfig(gremlinsConfiguration) {
         })
       }
     } else {
-      // This is a single character
+      // 單一字元
       gremlins[charFromHex(hexCodePoint)] = Object.assign({}, config, {
         hexCodePoint,
         decorationType: cachedDecorationType(decorationType),
@@ -172,11 +179,8 @@ function charFromHex(hexCodePoint) {
 }
 
 /**
- *
+ * 檢查目前文字編輯器中的干擾字元
  * @param {vscode.TextEditor} activeTextEditor
- * @param {*} gremlins
- * @param {RegExp} regexpWithAllChars
- * @param {vscode.DiagnosticCollection} diagnosticCollection
  */
 function checkForGremlins(activeTextEditor) {
   if (!activeTextEditor) {
@@ -185,37 +189,32 @@ function checkForGremlins(activeTextEditor) {
 
   const doc = activeTextEditor.document
 
-  let { gremlins, regexpWithAllChars, diagnosticCollection } =
+  const { gremlins, regexpWithAllChars, diagnosticCollection } =
     loadConfiguration(doc)
 
   const decorationOption = {}
   for (const char in gremlins) {
     decorationOption[char] = []
   }
-  /** vscode.Diagnostic[] */
-  let diagnostics = []
+  /** @type {vscode.Diagnostic[]} */
+  const diagnostics = []
 
   for (let lineNum = 0; lineNum < doc.lineCount; lineNum++) {
-    let lineText = doc.lineAt(lineNum)
-    let line = lineText.text
+    const lineText = doc.lineAt(lineNum)
+    const line = lineText.text
 
     let match
     while ((match = regexpWithAllChars.exec(line))) {
       const matchedCharacter = match[0][0]
 
       const gremlin = gremlins[matchedCharacter]
-      let startPos = new vscode.Position(lineNum, match.index)
-      let endPos = new vscode.Position(lineNum, match.index + match[0].length)
+      const startPos = new vscode.Position(lineNum, match.index)
+      const endPos = new vscode.Position(lineNum, match.index + match[0].length)
+      const count = match[0].length
+
       const decoration = {
         range: new vscode.Range(startPos, endPos),
-        hoverMessage:
-          match[0].length +
-          ' ' +
-          gremlin.description +
-          (match[0].length > 1 ? 's' : '') +
-          ' (unicode U+' +
-          gremlin.hexCodePoint +
-          ') here',
+        hoverMessage: `此處有 ${count} 個 ${gremlin.description} (Unicode U+${gremlin.hexCodePoint})`,
       }
 
       decorationOption[matchedCharacter].push(decoration)
@@ -226,7 +225,7 @@ function checkForGremlins(activeTextEditor) {
           range: decoration.range,
           message: decoration.hoverMessage,
           severity: severity,
-          source: 'Gremlins tracker',
+          source: '程式碼除妖鏡',
         }
         diagnostics.push(diagnostic)
       }
@@ -246,13 +245,13 @@ function checkForGremlins(activeTextEditor) {
 
 function groupDecorationsByType(gremlins, decorationOption) {
   return Object.entries(gremlins).reduce((obj, [char, gremlin]) => {
-    const decorationType = gremlin.decorationType,
-      options = decorationOption[char]
+    const { decorationType } = gremlin
+    const options = decorationOption[char]
 
-    if (!obj.hasOwnProperty(decorationType.key)) {
+    if (!Object.prototype.hasOwnProperty.call(obj, decorationType.key)) {
       obj[decorationType.key] = {
-        decorationType: decorationType,
-        options: options,
+        decorationType,
+        options,
       }
     } else {
       obj[decorationType.key].options =
@@ -269,7 +268,7 @@ function drawDecorations(activeTextEditor, decorations) {
 }
 
 /**
- *
+ * 啟用套件
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
@@ -311,7 +310,7 @@ function activate(context) {
 
   eventListeners.push(
     vscode.workspace.onDidChangeTextDocument(
-      (_event) => checkForGremlins(vscode.window.activeTextEditor),
+      () => checkForGremlins(vscode.window.activeTextEditor),
       null,
       context.subscriptions,
     ),
@@ -320,7 +319,9 @@ function activate(context) {
   eventListeners.push(
     vscode.workspace.onDidCloseTextDocument(
       (textDocument) => {
-        diagnosticCollection && diagnosticCollection.delete(textDocument.uri)
+        if (diagnosticCollection) {
+          diagnosticCollection.delete(textDocument.uri)
+        }
         delete processedDocuments[textDocument.uri]
       },
       null,
@@ -332,7 +333,7 @@ function activate(context) {
 }
 exports.activate = activate
 
-// this method is called when your extension is deactivated
+// 停用套件
 function deactivate() {
   if (diagnosticCollection) {
     diagnosticCollection.clear()
