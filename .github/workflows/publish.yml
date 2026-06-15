@@ -1,0 +1,82 @@
+name: Publish to VS Code Marketplace
+
+on:
+  push:
+    tags:
+      - 'v*' # 當推送版本標記（例如 v1.0.0）時觸發自動發佈
+
+# 限制 GitHub Token 的預設權限以維護資訊安全
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Test Suite
+        run: npm test
+
+  publish:
+    name: Publish Extension
+    needs: test
+    runs-on: ubuntu-latest
+    # 使用保護環境 (GitHub Environment) 以要求發佈前的審查或限制機密存取
+    environment: Release
+    permissions:
+      contents: read
+      id-token: write # 開啟 id-token 寫入權限，支援 GitHub Actions OIDC (如整合 Azure Key Vault 或 AWS Secrets Manager)
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # ========================================================================
+      # OIDC 整合安全發佈方案範例
+      # 若您想避免在 GitHub 儲存長期存取的 VSCE_PAT，可使用 OIDC 登入雲端金庫動態讀取 PAT
+      # ========================================================================
+      # - name: Azure Login via OIDC (Azure 聯邦身分驗證)
+      #   uses: azure/login@v2
+      #   with:
+      #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
+      #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+      #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      #
+      # - name: Get PAT from Azure Key Vault (從金庫讀取短期或託管 PAT)
+      #   uses: azure/get-keyvault-secrets@v1
+      #   with:
+      #     keyvault: "doggy8088KeyVault"
+      #     secrets: 'VSCE_PAT'
+      #   id: keyvault
+      # ========================================================================
+
+      - name: Publish to Visual Studio Marketplace
+        run: npx @vscode/vsce publish -p $VSCE_PAT
+        env:
+          # 如果啟用了上述的 OIDC 機密讀取步驟，請將下行改為：
+          # VSCE_PAT: ${{ steps.keyvault.outputs.VSCE_PAT }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
