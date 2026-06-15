@@ -1,14 +1,18 @@
 {
-  "name": "gremlins-tracker-zh-tw",
+  "name": "code-gremlins-detector",
   "displayName": "程式碼除妖鏡 (Gremlins Tracker)",
   "version": "0.26.0",
   "publisher": "doggy8088",
   "author": {
-    "name": "Nicolas Hoizey",
-    "email": "nicolas@hoizey.com",
-    "url": "https://nicolas-hoizey.com/"
+    "name": "Will 保哥",
+    "email": "doggy.huang@gmail.com",
+    "url": "https://www.facebook.com/will.fans"
   },
   "contributors": [
+    {
+      "name": "Will 保哥",
+      "url": "https://github.com/doggy8088"
+    },
     {
       "name": "Anthony Ricaud",
       "url": "https://github.com/rik"
@@ -29,12 +33,12 @@
   "repository": "https://github.com/doggy8088/vscode-gremlins.git",
   "badges": [
     {
-      "href": "https://marketplace.visualstudio.com/items?itemName=doggy8088.gremlins-tracker-zh-tw",
-      "url": "https://img.shields.io/vscode-marketplace/d/doggy8088.gremlins-tracker-zh-tw.svg",
+      "href": "https://marketplace.visualstudio.com/items?itemName=doggy8088.code-gremlins-detector",
+      "url": "https://img.shields.io/vscode-marketplace/d/doggy8088.code-gremlins-detector.svg",
       "description": "Visual Studio 擴充功能市集"
     },
     {
-      "href": "https://marketplace.visualstudio.com/items?itemName=doggy8088.gremlins-tracker-zh-tw",
+      "href": "https://marketplace.visualstudio.com/items?itemName=doggy8088.code-gremlins-detector",
       "url": "https://img.shields.io/github/package-json/v/doggy8088/vscode-gremlins.svg",
       "description": "GitHub 套件版本"
     }

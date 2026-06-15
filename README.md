@@ -1,7 +1,7 @@
 # 程式碼除妖鏡 (Gremlins Tracker) for Visual Studio Code
 
-[![GitHub package version](https://img.shields.io/github/package-json/v/doggy8088/vscode-gremlins.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=doggy8088.gremlins-tracker-zh-tw)
-[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/d/doggy8088.gremlins-tracker-zh-tw.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=doggy8088.gremlins-tracker-zh-tw)
+[![GitHub package version](https://img.shields.io/github/package-json/v/doggy8088/vscode-gremlins.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=doggy8088.code-gremlins-detector)
+[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/d/doggy8088.code-gremlins-detector.svg?style=for-the-badge&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=doggy8088.code-gremlins-detector)
 [![GitHub stars](https://img.shields.io/github/stars/doggy8088/vscode-gremlins.svg?style=for-the-badge&logo=github)](https://github.com/doggy8088/vscode-gremlins/stargazers)
 
 這款 [Visual Studio Code](https://code.visualstudio.com/) 擴充功能可以幫你找出程式碼中潛在的「妖魔鬼怪」（Gremlins，即隱形字元、零寬字元，或看起來和正常字元一模一樣的干擾字元），避免它們造成編譯或執行時難以排查的錯誤。
